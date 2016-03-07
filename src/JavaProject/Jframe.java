@@ -81,7 +81,9 @@ public class Jframe {
 				groups = formattedTextField.getText();
 				if(Utility.numberOrNot(groups) != true)
 				{
-					System.out.println("Is not a number");
+					JOptionPane.showMessageDialog(null, "Check It Out!!!");
+					
+					//System.out.println("Is not a number");
 				}
 				//else if(groups == )
 				else
