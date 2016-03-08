@@ -37,6 +37,7 @@ public class Jframe {
 	static String groups;
 	static String area;
 	int a = 0;
+	ArrayList<String> str = new ArrayList<String>();
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -120,7 +121,6 @@ public class Jframe {
 								a++;
 								if(a <= loop)
 								{
-									ArrayList<String> str = new ArrayList<String>();
 									area = textField_1.getText();
 									str.add(area);
 									list.add(area);
@@ -154,7 +154,7 @@ public class Jframe {
 							{
 								GoogleMap gMap = new GoogleMap();
 								try {
-									gMap.initMap();
+									gMap.initMap(str);
 								} catch (InterruptedException e) {
 									// TODO Auto-generated catch block
 									e.printStackTrace();
