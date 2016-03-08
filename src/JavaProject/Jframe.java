@@ -2,24 +2,28 @@ package JavaProject;
 
 import java.awt.EventQueue;
 
-import java.awt.Window;
 import javax.swing.JFrame;
+
 import java.awt.CardLayout;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
 import java.awt.Font;
+
 import javax.swing.JTextArea;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JFormattedTextField;
-import javax.swing.JPopupMenu;
-import java.awt.Component;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+
 import javax.swing.JList;
-import java.awt.Panel;
+
+import java.util.ArrayList;
 import java.awt.List;
 
 
@@ -105,31 +109,35 @@ public class Jframe {
 					frame2.add(textField_1);
 					textField_1.setColumns(10);
 					
-					JTextArea textArea = new JTextArea();
+					/*JTextArea textArea = new JTextArea();
 					textArea.setBounds(59, 104, 220, 146);
-					frame2.add(textArea);
+					frame2.add(textArea);*/
 					
-					JButton btnA = new JButton("ADD");
-					btnA.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							System.out.println("Kaam Krra saala");
-							JList list_1 = new JList();
-							list_1.setBounds(57, 106, 187, 110);
-							frame2.add(list_1);
-							String[] data = {};
-							int i, loop = Integer.parseInt(groups);
-							for(i = 0; i < loop; i++)
-							{
+					
+					int i, loop = Integer.parseInt(groups);
+					List list = new List();
+					list.setBounds(39, 95, 240, 124);
+					frame2.add(list);
+					for(i = 0; i < loop; i++)	{
+						JButton btnA = new JButton("ADD");
+						btnA.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								System.out.println("Kaam Krra saala");
+								//final DefaultListModel<String> list = new DefaultListModel<String>();
+								ArrayList<String> str = new ArrayList<String>();
 								area = textField_1.getText();
-								list_1.add(new JList(data));	
-								list_1.setVisible(true);
+								str.add(area);
+								//list.add(i, str.get(i));
+								list.add(area);
+								//frame2.add(list, str.get(i));
+								
+								System.out.println(area);
+								//new city = textfield_1.getText();
 							}
-							System.out.println(area);
-							//new city = textfield_1.getText();
-						}
-					});
-					btnA.setBounds(355, 46, 69, 23);
-					frame2.add(btnA);
+						});
+						btnA.setBounds(355, 46, 69, 23);
+						frame2.add(btnA);
+					}
 					
 					JButton btnNewButton_1 = new JButton("Locate On Map");
 					btnNewButton_1.addActionListener(new ActionListener() {
@@ -149,7 +157,7 @@ public class Jframe {
 		frame1.add(btnNewButton);
 		
 		
-		//delete it after design
+		/*//delete it after design
 		final JPanel frame2 = new JPanel();
 		frame.getContentPane().add(frame2, "name_9113232328555");
 		frame2.setLayout(null);
@@ -164,13 +172,13 @@ public class Jframe {
 		textField_1 = new JTextField();
 		textField_1.setBounds(136, 42, 200, 31);
 		frame2.add(textField_1);
-		textField_1.setColumns(10);
+		textField_1.setColumns(10);*/
 		
 	/*JButton btnNewButton = new JButton("Go");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) */	
 		
-		JButton btnA = new JButton("ADD");
+		/*JButton btnA = new JButton("ADD");
 		btnA.setBounds(355, 46, 69, 23);
 		frame2.add(btnA);
 		
@@ -179,8 +187,9 @@ public class Jframe {
 		frame2.add(btnNewButton_1);
 		
 		List list = new List();
-		list.setBounds(51, 100, 213, 137);
-		frame2.add(list);
+		list.setBounds(39, 95, 240, 124);
+		frame2.add(list);*/
+		
 		//till here
 	}
 }
