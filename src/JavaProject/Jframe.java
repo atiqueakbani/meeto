@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import java.awt.CardLayout;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -20,7 +21,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JFormattedTextField;
-
 import javax.swing.JList;
 
 import java.util.ArrayList;
@@ -73,8 +73,7 @@ public class Jframe {
 		
 		JFormattedTextField formattedTextField = new JFormattedTextField();
 		formattedTextField.setBounds(231, 42, 39, 20);
-		frame1.add(formattedTextField);
-		
+		frame1.add(formattedTextField);		
 		
 		JLabel New = new JLabel("How Big is Your Group");
 		New.setBounds(10, 27, 141, 50);
@@ -107,6 +106,7 @@ public class Jframe {
 					textField_1.setBounds(136, 42, 200, 31);
 					frame2.add(textField_1);
 					textField_1.setColumns(10);
+					textField_1.setUI(new HintTextFieldUI("Write your area", true));
 					
 					int i, loop = Integer.parseInt(groups);
 					System.out.println(loop);
@@ -117,7 +117,6 @@ public class Jframe {
 						JButton btnA = new JButton("ADD");
 						btnA.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent e) {
-								//System.out.println("Kaam Krra saala");
 								a++;
 								if(a <= loop)
 								{
@@ -125,8 +124,16 @@ public class Jframe {
 									area = textField_1.getText();
 									str.add(area);
 									list.add(area);
+									textField_1.setText("");
+									textField_1.setUI(new HintTextFieldUI("Write your area", true));
 									System.out.println(area);
-							
+								}
+								else
+								{
+									JOptionPane.showMessageDialog(frame,
+										    "Only " + loop + " locations mentioned!",
+										    "Input Error",
+										    JOptionPane.ERROR_MESSAGE);
 								}
 							}
 						});
@@ -136,7 +143,23 @@ public class Jframe {
 					JButton btnNewButton_1 = new JButton("Locate On Map");
 					btnNewButton_1.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent arg0) {
-							System.out.println("Kaam Krra saala");
+							if(a <= loop)
+							{
+								JOptionPane.showMessageDialog(frame,
+									    "Only " + a + " locations selected! Select " + (loop - a) + " more!",
+									    "Location Error",
+									    JOptionPane.ERROR_MESSAGE);
+							}
+							else
+							{
+								GoogleMap gMap = new GoogleMap();
+								try {
+									gMap.initMap();
+								} catch (InterruptedException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+							}	
 						}
 					});
 					btnNewButton_1.setBounds(301, 150, 123, 36);
